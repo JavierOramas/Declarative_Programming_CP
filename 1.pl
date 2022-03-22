@@ -42,3 +42,21 @@ my_delete_last_occurrence(X,L,R) :-
     my_reverse(NL,R),
     my_delete_first(X,Rev,NL),
     my_reverse(L,Rev).
+
+% Permutation
+my_permutation([], []).
+my_permutation([H|T],R) :- is_member(H,R), my_delete_first(H,R,NR), my_permutation(T,NR).
+
+% Palindrome
+my_palindrome(X) :- my_reverse(X,R), R = X.
+
+% Subset
+my_subset([],_).
+my_subset([H|T],Y) :- is_member(H,Y), my_delete_first(H,Y,NR), my_subset(T,NR).
+
+% aux see if item is head in list
+my_first_equal(X,[H|_]) :- X = H.
+
+% Consecutive
+my_consecutive(X,Y,[H|T]) :- X = H, my_first_equal(Y,T).
+my_consecutive(X,Y,[_|T]) :- my_consecutive(X,Y,T).
