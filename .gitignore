@@ -1,5 +1,8 @@
-9.o
+*.o
 test.json
-9.hi
+*.hi
 9
 -sSf
+.gitignore
+10
+
