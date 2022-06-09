@@ -38,4 +38,4 @@ removeConsecutive (x:y:xs) =
     else x : removeConsecutive (y:xs)
 
 main = do
-    print( removeConsecutive([1,1,1,3,4,4, 2]))
+    print( consecutivePairs([1,1,1,3,4,4, 2]))
