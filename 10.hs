@@ -22,5 +22,20 @@ collatzSeqLength n m =
         then [collatzSeq n] ++ collatzSeqLength (n - 1) m
     else collatzSeqLength (n - 1) m
 
+-- function to return all consecutive pairs in a list
+consecutivePairs :: [a] -> [(a, a)]
+consecutivePairs [] = []
+consecutivePairs [x] = []
+consecutivePairs (x:y:xs) = (x, y) : consecutivePairs (y:xs)
+
+-- function to remove consecutive elements from a list if they are the same
+removeConsecutive :: Eq a => [a] -> [a]
+removeConsecutive [] = []
+removeConsecutive [x] = [x]
+removeConsecutive (x:y:xs) =
+    if x == y
+        then removeConsecutive (y:xs)
+    else x : removeConsecutive (y:xs)
+
 main = do
-    print(collatzSeqLength 10 6)
+    print( removeConsecutive([1,1,1,3,4,4, 2]))
